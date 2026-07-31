@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Happy Birthday My Love ❤️ - A magical luxury birthday experience for the most beautiful girl, born on 1 August 2002." />
+  <meta name="theme-color" content="#1a0022" />
+  <title>Happy Birthday My Love ❤️</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Mandali&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Canvas Multi-Particle Background Layer -->
+  <canvas id="ambient-canvas"></canvas>
+  <canvas id="fireworks-canvas"></canvas>
+
+  <!-- Custom Cursor Trail -->
+  <div id="cursor-heart"></div>
+
+  <!-- Audio Player Elements -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/music/birthday.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Floating Audio Controls Widget -->
+  <div class="audio-widget glass-card" id="audio-widget">
+    <button id="music-toggle-btn" aria-label="Toggle Music" class="icon-btn">
+      <span id="music-icon">🎵</span>
+    </button>
+    <div class="volume-container">
+      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.7" aria-label="Volume Slider" />
+    </div>
+  </div>
+
+  <!-- ==================== 1. LOADING SCREEN / INTRO ==================== -->
+  <section id="loader-screen" class="loader-overlay active">
+    <div class="loader-content glass-card glowing-border">
+      <div class="heart-pulse-container">
+        <div class="pulsing-heart">❤️</div>
+        <div class="ring-ripple"></div>
+      </div>
+      <h1 class="loader-title">A Journey Of Love Awaits</h1>
+      <p class="loader-subtitle">Press Enter or Tap Below to Begin</p>
+      <button id="enter-btn" class="btn-primary glow-btn">Enter Experience ✨</button>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT CONTAINER (Hidden until Enter is clicked) -->
+  <main id="main-content" class="hidden">
+
+    <!-- ==================== 2. LANDING HERO SECTION ==================== -->
+    <section id="hero" class="hero-section">
+      <div class="hero-content glass-card glow-box">
+        <div class="crown-badge">👑</div>
+        <h1 class="hero-title animate-text">Happy Birthday ❤️</h1>
+        <h2 class="hero-subtitle">To The Most Beautiful Girl</h2>
+        <div class="birth-date-badge">
+          <span>Born on</span>
+          <strong>1 August 2002</strong>
+        </div>
+        <p class="hero-quote">"In your smile, I see something more beautiful than the stars."</p>
+        <button id="hero-journey-btn" class="btn-primary glow-btn scroll-to-btn" data-target="#love-letter">
+          Begin Our Journey ✨
+        </button>
+      </div>
+      <div class="scroll-indicator">
+        <span>Scroll Down</span>
+        <div class="mouse-icon"><div class="wheel"></div></div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. LOVE LETTER SECTION ==================== -->
+    <section id="love-letter" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Deep From My Heart</span>
+          <h2 class="section-title">A Letter For You</h2>
+        </div>
+
+        <div class="letter-grid">
+          <!-- Telugu Romantic Note -->
+          <div class="glass-card letter-card telugu-card" data-aos="fade-up">
+            <div class="card-ornament">📜</div>
+            <h3 class="card-lang-title">తెలుగు ప్రేమ లేఖ</h3>
+            <div class="telugu-text-box">
+              <p class="telugu-line highlight">నాతో ఉండిపోవే బుజ్జి... ❤️</p>
+              <p class="telugu-line">ప్రాణం కన్నా ఎక్కువగా చూసుకుంటా.</p>
+              <p class="telugu-line">నీ నవ్వే నా ప్రపంచం.</p>
+              <p class="telugu-line">నువ్వు నా జీవితంలోకి వచ్చినందుకు దేవుడికి ఎప్పుడూ కృతజ్ఞుడిని.</p>
+              <p class="telugu-line highlight-gold">హ్యాపీ బర్త్‌డే నా ప్రేమ ❤️</p>
+            </div>
+          </div>
+
+          <!-- Typewriter English Letter -->
+          <div class="glass-card letter-card english-card" data-aos="fade-up" data-delay="200">
+            <div class="card-ornament">💌</div>
+            <h3 class="card-lang-title">To My Soulmate</h3>
+            <div class="typewriter-container">
+              <p id="typewriter-text"></p>
+              <span class="cursor">|</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. PHOTO GALLERY ==================== -->
+    <section id="gallery" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Captured Perfection</span>
+          <h2 class="section-title">Memories With You</h2>
+          <p class="section-subtitle">Every photograph of you holds a piece of my heart.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item glass-card" data-index="0">
+            <img src="assets/images/photo1.jpg" alt="Beautiful Moment 1" loading="lazy" />
+            <div class="gallery-overlay">
+              <span>Pure Grace ✨</span>
+            </div>
+          </div>
+          <div class="gallery-item glass-card" data-index="1">
+            <img src="assets/images/photo2.jpg" alt="Beautiful Moment 2" loading="lazy" />
+            <div class="gallery-overlay">
+              <span>Warm Smiles & Doggo 🐾</span>
+            </div>
+          </div>
+          <div class="gallery-item glass-card" data-index="2">
+            <img src="assets/images/photo3.jpg" alt="Beautiful Moment 3" loading="lazy" />
+            <div class="gallery-overlay">
+              <span>Elegance Redefined 🌹</span>
+            </div>
+          </div>
+          <div class="gallery-item glass-card" data-index="3">
+            <img src="assets/images/photo4.jpg" alt="Beautiful Moment 4" loading="lazy" />
+            <div class="gallery-overlay">
+              <span>Traditional Radiance 💫</span>
+            </div>
+          </div>
+          <div class="gallery-item glass-card" data-index="4">
+            <img src="assets/images/photo5.jpg" alt="Beautiful Moment 5" loading="lazy" />
+            <div class="gallery-overlay">
+              <span>Us Together ❤️</span>
+            </div>
+          </div>
+          <div class="gallery-item glass-card" data-index="5">
+            <img src="assets/images/photo6.jpg" alt="Beautiful Moment 6" loading="lazy" />
+            <div class="gallery-overlay">
+              <span>Cute Mirror Selfie 📱</span>
+            </div>
+          </div>
+          <div class="gallery-item glass-card" data-index="6">
+            <img src="assets/images/photo7.jpg" alt="Beautiful Moment 7" loading="lazy" />
+            <div class="gallery-overlay">
+              <span>Peaceful Slumber 🌙</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FULLSCREEN LIGHTBOX MODAL -->
+    <div id="lightbox" class="lightbox-modal">
+      <span class="lightbox-close">&times;</span>
+      <button class="lightbox-nav prev-btn" id="lb-prev">&#10094;</button>
+      <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="Fullscreen Memory" />
+        <p id="lightbox-caption"></p>
+      </div>
+      <button class="lightbox-nav next-btn" id="lb-next">&#10095;</button>
+    </div>
+
+    <!-- ==================== 5. ROMANTIC TIMELINE ==================== -->
+    <section id="timeline" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Our Chapters</span>
+          <h2 class="section-title">The Journey Of Us</h2>
+        </div>
+
+        <div class="timeline-wrapper">
+          <div class="timeline-line"></div>
+
+          <div class="timeline-item left" data-aos="fade-right">
+            <div class="timeline-dot">⚡</div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-step">Chapter I</span>
+              <h3>Met You</h3>
+              <p>The universe aligned on the day our paths crossed. A simple moment that changed my life forever.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item right" data-aos="fade-left">
+            <div class="timeline-dot">🌷</div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-step">Chapter II</span>
+              <h3>Best Friends</h3>
+              <p>Late night conversations, endless laughter, understanding each other without saying a single word.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item left" data-aos="fade-right">
+            <div class="timeline-dot">💖</div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-step">Chapter III</span>
+              <h3>Fell in Love</h3>
+              <p>I realized my heart wasn't mine anymore—it belonged completely to you and your gorgeous soul.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item right" data-aos="fade-left">
+            <div class="timeline-dot">📸</div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-step">Chapter IV</span>
+              <h3>Beautiful Memories</h3>
+              <p>Every trip, every hug, every shared smile built a world where only you and I exist.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item left" data-aos="fade-right">
+            <div class="timeline-dot">🎂</div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-step">Chapter V</span>
+              <h3>Happy Birthday</h3>
+              <p>Celebrating the day the most precious human being was brought into this world. Happy Birthday!</p>
+            </div>
+          </div>
+
+          <div class="timeline-item right" data-aos="fade-left">
+            <div class="timeline-dot">♾️</div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-step">Chapter VI</span>
+              <h3>Forever ❤️</h3>
+              <p>Hand in hand, heart to heart. No distance, time, or lifetime can ever alter my devotion to you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. 100 REASONS INTERACTIVE ==================== -->
+    <section id="reasons" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Endless Devotion</span>
+          <h2 class="section-title">100 Reasons Why I Love You</h2>
+          <p class="section-subtitle">Click the heart button below to reveal another reason why you mean everything to me.</p>
+        </div>
+
+        <div class="reasons-card glass-card glow-box">
+          <div class="reason-counter">
+            Reason <span id="reason-number">1</span> of 100
+          </div>
+          <div class="reason-display">
+            <blockquote id="reason-text">"Your beautiful smile lights up my entire world even in the darkest hours."</blockquote>
+          </div>
+          <div class="reasons-controls">
+            <button id="next-reason-btn" class="btn-primary glow-btn">
+              Reveal Another Reason ❤️
+            </button>
+          </div>
+          <div class="progress-bar-container">
+            <div id="reason-progress-bar" class="progress-bar"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. BIRTHDAY CAKE ANIMATED ==================== -->
+    <section id="cake-section" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Make A Wish</span>
+          <h2 class="section-title">Blow The Birthday Candles</h2>
+          <p class="section-subtitle">Click on the flames or the button to blow out the candles and start the celebration!</p>
+        </div>
+
+        <div class="cake-wrapper glass-card">
+          <div class="cake-container">
+            <div class="plate"></div>
+            <div class="layer layer-bottom"></div>
+            <div class="layer layer-middle"></div>
+            <div class="layer layer-top"></div>
+            <div class="icing"></div>
+            
+            <!-- Candles -->
+            <div class="candles-group">
+              <div class="candle">
+                <div class="flame active-flame"></div>
+              </div>
+              <div class="candle">
+                <div class="flame active-flame"></div>
+              </div>
+              <div class="candle">
+                <div class="flame active-flame"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cake-actions">
+            <button id="blow-candles-btn" class="btn-primary glow-btn">
+              🎂 Blow out candles!
+            </button>
+            <p id="wish-status" class="wish-message"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 8. SURPRISE GIFT BOX ==================== -->
+    <section id="surprise" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">A Magical Present</span>
+          <h2 class="section-title">Unwrap Your Surprise</h2>
+        </div>
+
+        <div class="gift-section-content glass-card">
+          <div class="gift-box-wrapper" id="gift-box">
+            <div class="gift-lid">
+              <div class="ribbon-bow"></div>
+            </div>
+            <div class="gift-body">
+              <div class="ribbon-vertical"></div>
+              <div class="ribbon-horizontal"></div>
+            </div>
+          </div>
+          <p class="gift-instruction">Click the gift box to open your birthday magic!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 9. FINALE DARK SKY ==================== -->
+    <section id="finale" class="finale-section">
+      <div class="moon"></div>
+      <div class="finale-content glass-card glow-box">
+        <div class="stars-badge">✨ 🌌 ✨</div>
+        <h2 class="finale-quote">"In every lifetime,<br>I will still choose you."</h2>
+        
+        <div class="finale-telugu">
+          <p class="telugu-main">నాతో ఉండిపోవే బుజ్జి...</p>
+          <p class="telugu-sub">ప్రాణం కన్నా ఎక్కువగా చూసుకుంటా ❤️</p>
+        </div>
+
+        <div class="finale-signature">
+          <h3>Happy Birthday My Love ❤️</h3>
+          <p class="signature-name">Forever Yours,</p>
+          <h4 class="akash-sign">Akash ❤️</h4>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
