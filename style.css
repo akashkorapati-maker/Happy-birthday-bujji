@@ -919,3 +919,21 @@ main.hidden {
   .moon { width: 60px; height: 60px; top: 5%; right: 8%; }
   .finale-quote { font-size: 1.7rem; }
 }
+.heart-cursor {
+    position: fixed;
+    font-size: 18px;
+    pointer-events: none;
+    animation: floatHeart 1s linear forwards;
+    z-index: 99999;
+}
+
+@keyframes floatHeart {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -100px) scale(1.8);
+    }
+}
