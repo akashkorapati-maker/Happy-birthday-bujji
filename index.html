@@ -361,5 +361,20 @@
   </main>
 
   <script src="script.js"></script>
+<script src="script.js"></script>
+
+<audio id="bgMusic" loop>
+    <source src="Song.mp3.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener("click", function () {
+    const music = document.getElementById("bgMusic");
+    music.play();
+}, { once: true });
+</script>
+
+</body>
+  
 </body>
 </html>
